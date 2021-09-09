@@ -8,6 +8,10 @@ import EditPostPage from '../../pages/EditPostPage'
 import LoginPage from '../../pages/LoginPage'
 import RegisterPage from '../../pages/RegisterPage'
 import ArticlePage from '../../pages/ArticlePage'
+import { useEffect } from 'react'
+import { getAuthToken } from '../../utils'
+import { useDispatch, useSelector } from 'react-redux'
+import { setUser, getMe } from '../../redux/reducers/userReducer'
 
 const Root = styled.div`
   letter-spacing: 1px;
@@ -33,35 +37,47 @@ const Loading = styled.div`
 `
 
 function App() {
+  const dispatch = useDispatch()
+  const user = useSelector((state) => state.users.user)
+
+  useEffect(() => {
+    // 有 token 才 call api
+    if (getAuthToken()) {
+      dispatch(getMe())
+    }
+  }, [dispatch])
+
   return (
-    <Root>
-      <Router>
-        <Header />
-        <Switch>
-          <Route exact path="/">
-            <HomePage />
-          </Route>
-          <Route path="/about">
-            <AboutPage />
-          </Route>
-          <Route path="/new-post">
-            <PostPage />
-          </Route>
-          <Route path="/edit-post/:id">
-            <EditPostPage />
-          </Route>
-          <Route path="/login">
-            <LoginPage />
-          </Route>
-          <Route path="/register">
-            <RegisterPage />
-          </Route>
-          <Route path="/posts/:id">
-            <ArticlePage />
-          </Route>
-        </Switch>
-      </Router>
-    </Root>
+    <div value={{ user, setUser }}>
+      <Root>
+        <Router>
+          <Header />
+          <Switch>
+            <Route exact path="/">
+              <HomePage />
+            </Route>
+            <Route path="/about">
+              <AboutPage />
+            </Route>
+            <Route path="/new-post">
+              <PostPage />
+            </Route>
+            <Route path="/edit-post/:id">
+              <EditPostPage />
+            </Route>
+            <Route path="/login">
+              <LoginPage />
+            </Route>
+            <Route path="/register">
+              <RegisterPage />
+            </Route>
+            <Route path="/posts/:id">
+              <ArticlePage />
+            </Route>
+          </Switch>
+        </Router>
+      </Root>
+    </div>
   )
 }
 

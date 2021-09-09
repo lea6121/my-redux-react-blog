@@ -127,6 +127,16 @@ export const deletePost = (id) => (dispatch) => {
   deletePostAPI(id).then((res) => {
     dispatch(setDeletePostResponse(res))
     dispatch(setIsLoadingDeletePost(false))
+    let page = 1
+    getPostsAPI(page)
+      .then((data) => {
+        dispatch(setIsLoadingPosts(false))
+        dispatch(setTotalPosts(data.totalPosts))
+        return data.posts
+      })
+      .then((posts) => {
+        dispatch(setPosts(posts))
+      })
   })
 }
 

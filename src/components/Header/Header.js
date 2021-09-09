@@ -55,11 +55,13 @@ export default function Header() {
   const user = useSelector((store) => store.users.user)
 
   const handleLogout = () => {
-    setAuthToken('')
-    dispatch(setUser(null))
-    alert('登出成功！')
-    if (location.pathname !== '/') {
-      history.push('/')
+    const logoutMsg = window.confirm('確認登出嗎？')
+    if (logoutMsg) {
+      setAuthToken('')
+      dispatch(setUser(null))
+      if (location.pathname !== '/') {
+        history.push('/')
+      }
     }
   }
 

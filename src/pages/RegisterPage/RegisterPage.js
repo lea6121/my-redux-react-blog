@@ -53,7 +53,7 @@ export default function RegisterPage() {
               placeholder="您的暱稱"
               value={nickname}
               onChange={(e) => updateFormData(e)}
-              // required
+              required
             />
             <br />
           </div>
@@ -67,7 +67,7 @@ export default function RegisterPage() {
               placeholder="您的使用者名稱"
               value={username}
               onChange={(e) => updateFormData(e)}
-              // required
+              required
             />
             <br />
           </div>
@@ -81,7 +81,7 @@ export default function RegisterPage() {
               placeholder="您的密碼"
               value={password}
               onChange={(e) => updateFormData(e)}
-              // required
+              required
             />
             <br />
             <span>{errorMsg}</span>

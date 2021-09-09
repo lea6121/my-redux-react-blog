@@ -97,4 +97,13 @@ export const login = (data) => (dispatch) => {
     })
   })
 }
+
+export const getMe = () => (dispatch) => {
+  getMeAPI().then((res) => {
+    if (res.ok) {
+      dispatch(setUser(res.data))
+    }
+  })
+}
+
 export default userReducer.reducer

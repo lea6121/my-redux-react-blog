@@ -9,10 +9,11 @@
 }
 
 .about-profile__pic {
+  margin: 100px 0 40px;
   border-left: 1px solid black;
   height: 1000px;
   width: auto;
-  background-image: url(https://images.unsplash.com/photo-1471897488648-5eae4ac6686b?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80);
+  background-image: url(https://images.unsplash.com/photo-1630283018262-d0df4afc2fef?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80);
   background-size: contain;
   background-position-x: 50vw;
   background-repeat: no-repeat;
